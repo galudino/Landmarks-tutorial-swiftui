@@ -7,12 +7,22 @@
 
 import SwiftUI
 
+///
+/// Custom image view
+///
 struct CircleImage: View {
     var body: some View {
+        ///
+        /// The `turtlerock@2x.png` image is loaded from the project's asset catalog, `Assets.xcassets`.
+        ///
         Image("turtlerock")
+            /// Add a call to `clipShape(Circle())` to apply the circular clipping shape to the image.
+            /// The `Circle` type is a shape that you can use as a mask, or as a view by giving the circle
+            /// a stroke or fill.
             .clipShape(Circle())
-            .overlay(Circle()
-            .stroke(Color.white, lineWidth: 4))
+            /// - Create another circle with a white stroke, and then add it as an overlay to give the image a border.
+            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+            /// - Add a shadow with a 7 point radius.
             .shadow(radius: 7)
     }
 }
