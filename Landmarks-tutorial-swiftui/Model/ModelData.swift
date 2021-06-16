@@ -7,7 +7,11 @@
 
 import Foundation
 
-func load<T: Decodable>(_ filename: String) -> T {
+///
+/// Create a `load` function that fetches the JSON data with a given name from the app's main bundle.
+/// The `load` function relies on the return type's conformance to the `Decodable` protocol.
+///
+func load<T>(_ filename: String) -> T where T: Decodable {
     let data: Data
     
     guard let file = Bundle.main.url(forResource: filename, withExtension: nil) else {
@@ -27,5 +31,8 @@ func load<T: Decodable>(_ filename: String) -> T {
     }
 }
 
+///
+/// Create an array of landmarks that you initialize from `landmarkData.json`.
+///
 var landmarks: [Landmark] = load("landmarkData.json")
 

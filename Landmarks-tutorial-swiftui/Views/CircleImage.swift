@@ -11,6 +11,11 @@ import SwiftUI
 /// Custom image view
 ///
 struct CircleImage: View {
+    ///
+    /// Add a stored `Image` property to `CircleImage`.
+    /// This is a common pattern when building views using Swift UI.
+    /// Your custom views will often wrap and encapsulate a series of modifiers for a particular view.
+    ///
     var image: Image
     
     var body: some View {

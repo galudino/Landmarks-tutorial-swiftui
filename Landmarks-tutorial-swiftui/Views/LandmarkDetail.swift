@@ -8,10 +8,19 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
+    ///
+    /// Add a `Landmark` property to the `LandmarkDetail` type.
+    ///
+    /// The data within this model will be passed to the types throughout the `body` property.
+    ///
     var landmark: Landmark
     
     /// from ContentView.swift
     var body: some View {
+        ///
+        /// Instead of using a `VStack`, we change the container to a `ScrollView`
+        /// so the user can scroll through the descriptive content.
+        ///
         ScrollView {
             ///
             /// Add custom `MapView` to the top of the stack.
@@ -75,6 +84,13 @@ struct LandmarkDetail: View {
             }
             .padding()
         }
+        ///
+        /// Call the `navigationTitle(_ :)` modifier to give the navigation bar a title
+        /// when showing the detail view, and the
+        /// `navigationBarTitleDisplayMode(_ :)` modifier to make the title appear inline.
+        ///
+        /// The navigation changes only have an effect when the view is part of a navigation stack.
+        ///
         .navigationTitle(landmark.name)
         .navigationBarTitleDisplayMode(.inline)
     }

@@ -24,6 +24,13 @@ struct LandmarkRow: View {
 
 struct LandmarkView_Previews: PreviewProvider {
     static var previews: some View {
+        ///
+        /// You can use a `Group` to return multiple previews from a preview provider.
+        ///
+        /// Wrap the returned row in a `Group, and add the first row back again.
+        /// `Group` is a container for grouping view content. Xcode renderes the group's child
+        /// views as separate previews in the canvas.
+        ///
         Group {
             LandmarkRow(landmark: landmarks[0]).previewLayout(.fixed(width: 300, height: 70))
             LandmarkRow(landmark: landmarks[1]).previewLayout(.fixed(width: 300, height: 70))
