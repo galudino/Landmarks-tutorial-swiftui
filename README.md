@@ -41,7 +41,7 @@ https://developer.apple.com/tutorials/swiftui#swiftui-essentials
 ## Completed so far:
 
 - [x] Creating and Combining Views
-- [ ] Building Lists and Navigation
+- [x] Building Lists and Navigation
 - [ ] Handling User Input
 
 ## To build and run

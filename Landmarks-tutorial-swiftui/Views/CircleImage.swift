@@ -11,11 +11,10 @@ import SwiftUI
 /// Custom image view
 ///
 struct CircleImage: View {
+    var image: Image
+    
     var body: some View {
-        ///
-        /// The `turtlerock@2x.png` image is loaded from the project's asset catalog, `Assets.xcassets`.
-        ///
-        Image("turtlerock")
+        image
             /// Add a call to `clipShape(Circle())` to apply the circular clipping shape to the image.
             /// The `Circle` type is a shape that you can use as a mask, or as a view by giving the circle
             /// a stroke or fill.
@@ -29,6 +28,6 @@ struct CircleImage: View {
 
 struct CircleImage_Previews: PreviewProvider {
     static var previews: some View {
-        CircleImage()
+        CircleImage(image: Image("turtlerock"))
     }
 }

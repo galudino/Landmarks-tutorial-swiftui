@@ -9,6 +9,8 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
+    var coordinate: CLLocationCoordinate2D
+    
     ///
     /// Holds region information for the map.
     ///
@@ -27,12 +29,18 @@ struct MapView: View {
         /// When the user interacts with the map, the map updates the region value to match the part of the map
         /// that's currently visible in the user interface.
         ///
-        Map(coordinateRegion: $region)
+        Map(coordinateRegion: $region).onAppear { setRegion(coordinate) }
+    }
+    
+    private func setRegion(_ coordinate: CLLocationCoordinate2D) {
+        region = MKCoordinateRegion(
+            center: coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(coordinate: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868))
     }
 }
