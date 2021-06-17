@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
+    @EnvironmentObject
+    var modelData: ModelData
+    
     ///
     /// Add a `Landmark` property to the `LandmarkDetail` type.
     ///
     /// The data within this model will be passed to the types throughout the `body` property.
     ///
     var landmark: Landmark
+    
+    ///
+    /// Compute the index of the input landmark by comparing it with the model data.
+    ///
+    var landmarkIndex: Int {
+        modelData.landmarks.firstIndex(where: { $0.id == landmark.id })!
+    }
     
     /// from ContentView.swift
     var body: some View {
@@ -52,14 +62,22 @@ struct LandmarkDetail: View {
             ///
             VStack(alignment: .leading) {
                 ///
-                /// To customize a SwiftUI view, you call methods called modifiers.
-                /// Modifiers wrap a view to change its display or other properties.
-                /// Each modifier returns a new view, so it's common to chain
-                /// multiple modifiers, stacked vertically.
+                /// Embed the landmark's name in an `HStack` with a new `FavoriteButton`;
+                /// provide a binding to the `isFavorite` property with the `$`.
                 ///
-                Text(landmark.name)
-                    .font(.title)
-                    .foregroundColor(.green)
+                HStack {
+                    ///
+                    /// To customize a SwiftUI view, you call methods called modifiers.
+                    /// Modifiers wrap a view to change its display or other properties.
+                    /// Each modifier returns a new view, so it's common to chain
+                    /// multiple modifiers, stacked vertically.
+                    ///
+                    Text(landmark.name)
+                        .font(.title)
+                        .foregroundColor(.green)
+                        
+                    FavoriteButton(isSet: $modelData.landmarks[landmarkIndex].isFavorite)
+                }
                 ///
                 /// `.font(.title)`
                 /// This applies the system font to the text
@@ -97,7 +115,10 @@ struct LandmarkDetail: View {
 }
 
 struct LandmarkDetail_Previews: PreviewProvider {
+    static let modelData = ModelData()
+    
     static var previews: some View {
-        LandmarkDetail(landmark: landmarks[0])
+        LandmarkDetail(landmark: modelData.landmarks[0])
+            .environmentObject(modelData)
     }
 }

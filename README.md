@@ -29,6 +29,42 @@ In the Landmarks app, a user can flag their favorite places, and filter the list
 Download the starter project and follow along with this tutorial, or open the finished project and explore the code on your own.
 ```
 
+## What `LandmarksApp` does
+
+`LandmarksApp` displays a list of landmarks, each modeled by a `Landmark` object.<br>
+The `Landmark` objects are decoded from a provided JSON file, `landmarkData.json`.<br>
+
+The JSON file provides the following attributes to be modeled by the `Landmark` object:
+```
+name
+category
+city
+state
+id
+isFeature
+isFavorite
+park
+coordinates
+description
+```
+
+Images of the landmarks are provided in this project's asset catalog.
+
+The user can scroll up and down the list of landmarks,<br>
+and tap on a specific landmark in the list to see its detail page.<br>
+
+There is a "Favorites only" switch at the top of the list<br>
+that will filter out landmarks that have not been marked as a "favorite".
+
+A landmark can be "favorited" on its detail page -- which is accessed by tapping<br>
+the desired entry in the list view.
+
+A landmark's detail page consists of
+    - A map of the landmark, derived from the coordinate data provided by `landmarkData.json`
+    - An image of the landmark
+    - A user-interactable star, that can be tapped to mark as a "favorite".
+    - A description of the landmark.
+
 Written on macOS 11.4 Big Sur using Xcode 12.5.
 Tested with an iPhone 12 Pro Max simulator running iOS 14.5.
 
@@ -42,10 +78,11 @@ https://developer.apple.com/tutorials/swiftui#swiftui-essentials
 
 - [x] Creating and Combining Views
 - [x] Building Lists and Navigation
-- [ ] Handling User Input
+- [x] Handling User Input
 
 ## To build and run
 
 - `git clone` this repository
 - Open `Landmarks-tutorial-swiftui.xcodeproj` in Xcode
 - Hit <b>Command + R</b> to build and run this project
+

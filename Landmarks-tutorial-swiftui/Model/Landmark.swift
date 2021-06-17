@@ -10,7 +10,7 @@ import SwiftUI
 import CoreLocation
 
 ///
-/// Define a `Landmark` strucuture with a few properties matching names
+/// Define a `Landmark` structure with a few properties matching names
 /// of some of the keys in the `landmarkData.json` data file.
 ///
 /// Adding `Codable` conformance makes it easier to load data into the structure.
@@ -21,6 +21,7 @@ struct Landmark: Hashable, Codable, Identifiable {
     var park: String
     var state: String
     var description: String
+    var isFavorite: Bool
 
     ///
     /// Add an `imageName` property to read the name of the image from the data,
